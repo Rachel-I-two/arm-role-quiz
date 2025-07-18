@@ -3,32 +3,28 @@
 <html lang="zh-Hant">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Tech Career Quiz 科技人職業測驗</title>
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
   <div class="container">
-    <img src="images/arm_logo.png" alt="ARM Logo" class="logo"/>
-
+    <img src="images/arm_logo.png" alt="ARM Logo" class="logo" />
     <div id="start-screen">
       <h1>Tech Career Quiz 科技人職業測驗</h1>
       <p>快來完成這個小測驗，了解你在科技世界中的最佳定位吧！</p>
       <button id="start-button">開始測驗</button>
     </div>
-
-    <div id="quiz-container" style="display:none;">
+    <div id="quiz-container" style="display: none;">
       <div id="question"></div>
       <div id="options"></div>
-      <button id="next-button" style="display:none;">下一題</button>
     </div>
-
-    <div id="result" style="display:none;"></div>
-    <div id="result-extra" class="text-center text-base text-gray-700 mt-4 hidden">
+    <div id="result-container" style="display: none;">
+      <div id="result"></div>
+    </div>
+    <div id="end-screen" style="display: none;">
       <p>📸 請截圖此頁至接待台領取小贈品！</p>
-      <button id="retry-button" class="mt-4 px-4 py-2 bg-blue-600 text-white rounded-full hover:bg-blue-700 active:bg-blue-800">
-        🔁 重新測驗
-      </button>
+      <button onclick="restartQuiz()">🔁 重新測驗</button>
     </div>
   </div>
   <script src="script.js"></script>
