@@ -100,3 +100,16 @@ document.addEventListener('DOMContentLoaded', function () {
     showQuestion();
   });
 });
+
+document.addEventListener('DOMContentLoaded', function () {
+  const retryBtn = document.getElementById('retry-button');
+  if (retryBtn) {
+    retryBtn.addEventListener('click', () => {
+      location.reload();
+    });
+  }
+  const resultExtra = document.getElementById('result-extra');
+  if (resultExtra) {
+    resultExtra.style.display = 'block';
+  }
+});
