@@ -1,10 +1,12 @@
 
-window.onload = function () {
-  document.getElementById('start-button').onclick = () => {
-    document.getElementById('start-screen').style.display = 'none';
-    document.getElementById('quiz-container').style.display = 'block';
-    showQuestion();
-  };
+document.addEventListener('DOMContentLoaded', function () {
+  const startButton = document.getElementById('start-button');
+  const startScreen = document.getElementById('start-screen');
+  const quizContainer = document.getElementById('quiz-container');
+  const questionEl = document.getElementById('question');
+  const optionsEl = document.getElementById('options');
+  const nextButton = document.getElementById('next-button');
+  const resultEl = document.getElementById('result');
 
   const questions = [
     {
@@ -61,18 +63,26 @@ window.onload = function () {
 
   function showQuestion() {
     const q = questions[currentQuestion];
-    document.getElementById('question').innerText = q.text;
-    const options = document.getElementById('options');
-    options.innerHTML = '';
+    questionEl.innerText = q.text;
+    optionsEl.innerHTML = '';
     for (const key in q.options) {
       const label = document.createElement('label');
       label.innerHTML = `<input type='radio' name='option' value='${key}'/> ${key}. ${q.options[key]}`;
-      options.appendChild(label);
+      optionsEl.appendChild(label);
     }
-    document.getElementById('next-button').style.display = 'block';
+    nextButton.style.display = 'block';
   }
 
-  document.getElementById('next-button').onclick = () => {
+  function showResult() {
+    const count = {};
+    answers.forEach(a => count[a] = (count[a] || 0) + 1);
+    let resultKey = Object.keys(count).find(k => count[k] >= 2) || 'MULTI';
+    quizContainer.style.display = 'none';
+    resultEl.innerText = results[resultKey];
+    resultEl.style.display = 'block';
+  }
+
+  nextButton.addEventListener('click', () => {
     const selected = document.querySelector("input[name='option']:checked");
     if (!selected) return alert("請選擇一個選項！");
     answers.push(selected.value);
@@ -82,14 +92,11 @@ window.onload = function () {
     } else {
       showResult();
     }
-  };
+  });
 
-  function showResult() {
-    const count = {};
-    answers.forEach(a => count[a] = (count[a] || 0) + 1);
-    let resultKey = Object.keys(count).find(k => count[k] >= 2) || 'MULTI';
-    document.getElementById('quiz-container').style.display = 'none';
-    document.getElementById('result').innerText = results[resultKey];
-    document.getElementById('result').style.display = 'block';
-  }
-};
+  startButton.addEventListener('click', () => {
+    startScreen.style.display = 'none';
+    quizContainer.style.display = 'block';
+    showQuestion();
+  });
+});
