@@ -10,11 +10,19 @@
 <body>
   <div class="container">
     <img src="images/arm_logo.png" alt="ARM Logo" class="logo"/>
-    <div id="quiz-container">
+
+    <div id="start-screen">
+      <h1>ARM 趣味角色測驗</h1>
+      <p>透過三道題目，了解你在科技世界中的最佳定位！</p>
+      <button id="start-button">開始測驗</button>
+    </div>
+
+    <div id="quiz-container" style="display:none;">
       <div id="question"></div>
       <div id="options"></div>
       <button id="next-button" style="display:none;">下一題</button>
     </div>
+
     <div id="result" style="display:none;"></div>
   </div>
   <script src="script.js"></script>

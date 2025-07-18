@@ -1,4 +1,10 @@
 
+document.getElementById('start-button').onclick = () => {
+  document.getElementById('start-screen').style.display = 'none';
+  document.getElementById('quiz-container').style.display = 'block';
+  showQuestion();
+};
+
 const questions = [
   {
     text: "你最享受工作中哪種挑戰？",
@@ -71,7 +77,7 @@ document.getElementById('next-button').onclick = () => {
   answers.push(selected.value);
   currentQuestion++;
   if (currentQuestion < questions.length) {
-    showQuestion();
+    
   } else {
     showResult();
   }
@@ -86,4 +92,4 @@ function showResult() {
   document.getElementById('result').style.display = 'block';
 }
 
-showQuestion();
+
